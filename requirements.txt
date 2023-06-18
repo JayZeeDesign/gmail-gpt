@@ -1,0 +1,5 @@
+fastapi[all]
+openai
+python-dotenv
+pydantic
+os
