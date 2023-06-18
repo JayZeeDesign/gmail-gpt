@@ -42,6 +42,7 @@ function_descriptions = [
                     "description": "What is the suggested next step to move this forward?"
                 }
             },
+            "required": ["companyName", "useCase", "contactDetails", "priority", "category", "nextStep"]
         }
     }
 ]
@@ -71,4 +72,19 @@ def analyse_email(email: Email):
         function_call="auto"
     )
 
-    return {"email": email}
+    arguments = response.choices[0]["message"]["function_call"]["arguments"]
+    companyName = eval(arguments).get("companyName")
+    useCase = eval(arguments).get("useCase")
+    contactDetails = eval(arguments).get("contactDetails")
+    priority = eval(arguments).get("priority")
+    category = eval(arguments).get("category")
+    nextStep = eval(arguments).get("nextStep")
+
+    return {
+        "companyName": companyName,
+        "useCase": useCase,
+        "contactDetails": contactDetails,
+        "priority": priority,
+        "category": category,
+        "nextStep": nextStep
+    }
