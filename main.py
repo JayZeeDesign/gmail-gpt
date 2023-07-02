@@ -61,7 +61,7 @@ Shirley Lou
 """
 
 prompt = f"Please extract key information from this email: {email} "
-message = [{"role": "user", "content": prompt}]
+messag = [{"role": "user", "content": prompt}]
 
 response = openai.ChatCompletion.create(
     model="gpt-4-0613",
